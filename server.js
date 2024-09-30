@@ -6,7 +6,9 @@ const cors = require("cors");
 app.use(cors());
 
 app.get("/api", (req, res) => {
-  console.log("hit");
+  console.log(
+    `/api ${new Date(Date.now()).toLocaleString("en-GB", { timeZone: "UTC" })}`
+  );
 
   res.json({ message: "Hello World!" });
 });
