@@ -57,10 +57,14 @@ app.get("/api/user/:id", async (req, res) => {
     const [results] = await db.query(`SELECT * FROM user WHERE ID = ${id}`);
 
     console.log(results);
-    res.json(results);
-  } catch (err) {
-    console.log(err);
-    res.json(err);
+    if (results == undefined) {
+      throw "Could not find user";
+    } else {
+      res.json(results);
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ error });
   }
 
   res.json({ id: id });
