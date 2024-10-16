@@ -3,8 +3,7 @@ const app = express();
 const PORT = 8080;
 const cors = require("cors");
 const { auth, requiresAuth } = require("express-openid-connect");
-const mysql = require("mysql2/promise");
-const db = require("./services/db");
+const user = require("./routes/api/user");
 
 // const config = {
 //   authRequired: false,
@@ -49,26 +48,7 @@ app.post("/api/auth/login", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
-// get db data from user
-app.get("/api/user/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
-
-  try {
-    const [results] = await db.query(`SELECT * FROM user WHERE ID = ${id}`);
-
-    console.log(results);
-    if (results == undefined) {
-      throw "Could not find user";
-    } else {
-      res.json(results);
-    }
-  } catch (error) {
-    console.log(error);
-    res.json({ error });
-  }
-
-  res.json({ id: id });
-});
+app.use("/api/user", user);
 
 app.listen(PORT, () => {
   console.log(`Server started on port http://localhost:${PORT}`);
