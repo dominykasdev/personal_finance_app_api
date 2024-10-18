@@ -1,9 +1,7 @@
-const express = require("express");
-const app = express();
-const PORT = 8080;
-const cors = require("cors");
-const { auth, requiresAuth } = require("express-openid-connect");
-const user = require("./routes/api/user");
+import express from "express";
+import cors from "cors";
+import { auth, requiresAuth } from "express-openid-connect";
+import user from "./src/routes/api/user";
 
 // const config = {
 //   authRequired: false,
@@ -13,6 +11,9 @@ const user = require("./routes/api/user");
 //   issuerBaseURL: process.env.AUTH_CLIENT_ISSUER,
 //   secret: process.env.AUTH_CLIENT_SECRET,
 // };
+
+const app = express();
+const PORT = 8080;
 
 app.use(cors());
 app.use(express.json());
