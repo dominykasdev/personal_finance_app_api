@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { auth, requiresAuth } from "express-openid-connect";
-import user from "./src/routes/api/user";
+import userRoutes from "./src/routes/api/userRoutes";
 
 // const config = {
 //   authRequired: false,
@@ -49,7 +49,7 @@ app.post("/api/auth/login", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
-app.use("/api/user", user);
+app.use("/api/user", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server started on port http://localhost:${PORT}`);
