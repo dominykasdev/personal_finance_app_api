@@ -35,6 +35,22 @@ const registerUser = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const userRequestData: UserRequestDTO = new UserRequestDTO(req.body);
+    const results = await userServices.updateUser(userRequestData);
+
+    if (results == undefined) {
+      throw `Could not find user with ID ${userRequestData.ID}`;
+    } else {
+      res.json(results);
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ error });
+  }
+};
+
 const deleteUser = async (req, res) => {
   const id = parseInt(req.params.id);
 
@@ -52,4 +68,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export default { getUser, registerUser };
+export default { getUser, registerUser, updateUser, deleteUser };

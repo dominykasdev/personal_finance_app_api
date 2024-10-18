@@ -17,4 +17,14 @@ router.post("/register", async (req, res) =>
   userControllers.registerUser(req, res)
 );
 
+//@route    PUT/api/user/:id
+//@desc     Update user by ID
+//@access   Public
+router.put("/:id", async (req, res) => userControllers.updateUser(req, res));
+
+//@route    DELETE/api/user/:id/
+//@desc     Delete user by ID
+//@access   Public
+router.delete("/:id", async (req, res) => userControllers.deleteUser(req, res));
+
 export default router;
