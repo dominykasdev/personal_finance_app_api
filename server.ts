@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { auth, requiresAuth } from "express-openid-connect";
 import userRoutes from "./src/routes/api/userRoutes";
+import chartRoutes from "./src/routes/api/chartRoutes";
 
 // const config = {
 //   authRequired: false,
@@ -50,6 +51,7 @@ app.post("/api/auth/login", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/chart", chartRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server started on port http://localhost:${PORT}`);
