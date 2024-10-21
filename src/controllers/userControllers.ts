@@ -3,7 +3,7 @@ import { User, UserRequestDTO } from "../models/User";
 import userServices from "../services/userServices";
 
 const getUser = async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
 
   try {
     const results = await userServices.getUser(id);

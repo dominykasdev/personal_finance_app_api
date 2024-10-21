@@ -1,8 +1,8 @@
 import { UserRequestDTO } from "../models/User";
 import db from "./db";
 
-const getUser = async (id: number) => {
-  const [rows] = await db.query(`SELECT * FROM user WHERE ID = ${id}`);
+const getUser = async (id: string) => {
+  const [rows] = await db.query(`SELECT * FROM user WHERE ID = '${id}'`);
   return rows;
 };
 
