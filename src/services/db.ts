@@ -1,5 +1,6 @@
 import mysql from "mysql2/promise";
 import { ConnectionOptions } from "mysql2/typings/mysql/lib/Connection";
+import "dotenv";
 
 const config: ConnectionOptions = {
   host: process.env.DB_SERVER,

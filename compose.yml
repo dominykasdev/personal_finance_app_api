@@ -1,0 +1,25 @@
+services:      
+  pfa_nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pfa_nodejs
+    container_name: pfa_nodejs
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: /home/node/app/node_modules/.bin/nodemon server.ts
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:
