@@ -43,7 +43,7 @@ export class User {
 }
 
 export class UserRequestDTO {
-  ID: string;
+  ID?: string;
   email: string;
   email_verified: boolean;
   given_name: string;
@@ -55,29 +55,55 @@ export class UserRequestDTO {
   last_login: Date;
   last_ip: string;
 
+  // constructor({
+  //   ID,
+  //   email,
+  //   emailVerified,
+  //   familyName,
+  //   givenName,
+  //   lastIP,
+  //   lastLogin,
+  //   loginsCount,
+  //   nickname,
+  //   picture,
+  //   userID,
+  // }: IUser) {
+  //   this.ID = ID;
+  //   this.email = email;
+  //   this.email_verified = emailVerified;
+  //   this.given_name = givenName;
+  //   this.family_name = familyName;
+  //   this.nickname = nickname;
+  //   this.picture = picture;
+  //   this.user_id = userID;
+  //   this.logins_count = loginsCount;
+  //   this.last_login = lastLogin;
+  //   this.last_ip = lastIP;
+  // }
+
   constructor({
     ID,
     email,
-    emailVerified,
-    familyName,
-    givenName,
-    lastIP,
-    lastLogin,
-    loginsCount,
+    email_verified,
+    given_name,
+    family_name,
     nickname,
     picture,
-    userID,
-  }: IUser) {
+    user_id,
+    logins_count,
+    last_login,
+    last_ip,
+  }) {
     this.ID = ID;
     this.email = email;
-    this.email_verified = emailVerified;
-    this.given_name = givenName;
-    this.family_name = familyName;
+    this.email_verified = email_verified;
+    this.given_name = given_name;
+    this.family_name = family_name;
     this.nickname = nickname;
     this.picture = picture;
-    this.user_id = userID;
-    this.logins_count = loginsCount;
-    this.last_login = lastLogin;
-    this.last_ip = lastIP;
+    this.user_id = user_id;
+    this.logins_count = logins_count;
+    this.last_login = last_login;
+    this.last_ip = last_ip;
   }
 }
